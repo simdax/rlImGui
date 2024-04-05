@@ -262,7 +262,7 @@ void SetupFontAwesome(void)
 
     ImGuiIO& io = ImGui::GetIO();
 
-	auto* fontPtr = io.Fonts->AddFontFromMemoryCompressedTTF((void*)fa_solid_900_compressed_data, fa_solid_900_compressed_size, FONT_AWESOME_ICON_SIZE, &icons_config, icons_ranges);
+	io.Fonts->AddFontFromMemoryCompressedTTF((void*)fa_solid_900_compressed_data, fa_solid_900_compressed_size, FONT_AWESOME_ICON_SIZE, &icons_config, icons_ranges);
 #endif
 
 }
@@ -473,7 +473,7 @@ void rlImGuiShutdown(void)
     if (GlobalContext != nullptr)
         return;
 
-	ImGui::SetCurrentContext(GlobalContext);
+	  ImGui::SetCurrentContext(GlobalContext);
     ImGui_ImplRaylib_Shutdown();
 
     ImGui::DestroyContext(GlobalContext);
