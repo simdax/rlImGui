@@ -5,16 +5,19 @@ project('rlImgui', 'cpp',
 cmake = import('cmake')
 
 options = cmake.subproject_options()
-# options.add_cmake_defines({'INCLUDE_EVERYTHING': 'ON'})
+# options.set_override_option('dest-dir', 'coucou')
+options.add_cmake_defines(
+  {'CUSTOMIZE_BUILD': 'ON',
+    'BUILD_SHARED_LIBS': 'ON',
+  'CMAKE_INSTALL_PREFIX': '../../..'})
 raylib = cmake.subproject('raylib', options: options)
-
 
 lib = static_library('rlImgui',
            'rlImGui.cpp',
            dependencies: [
             raylib.dependency('raylib'),
             subproject('imgui').get_variable('imgui_dep'),
-           ]
+           ],
     )
 
 dep = declare_dependency(
